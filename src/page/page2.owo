@@ -1,0 +1,36 @@
+<template lang="pug">
+.page2
+  img.page-2-left(src="@|page-2-left.png|")
+  img.page-2-text(src="@|page-2-text.png|")
+</template>
+
+<script>
+module.exports = {
+}
+</script>
+
+<style lang="less">
+.page2 {
+  width: 100%;
+  height: 100%;
+  background-image: url('@|page-2.jpg|');
+  background-size: cover;
+  background-position: center;
+}
+.page-2-left {
+  position: absolute;
+  right: 2%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  user-select: none;
+  pointer-events: none;
+}
+.page-2-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 2%;
+}
+</style>
