@@ -1,36 +1,114 @@
 <template lang="pug">
 .page2
-  img.page-2-left(src="@|page-2-left.png|")
+  .page-2-left
+    img.so.so-0(src="@|806.png|" o-hover="forward" o-tap="change(1)")
+    img.so.so-1(src="@|807.png|" o-hover="forward" o-tap="change(2)")
+    img.so.so-2(src="@|808.png|" o-hover="forward" o-tap="change(3)")
+    img.so.so-3(src="@|809.png|" o-hover="forward" o-tap="change(0)")
+    img.so.so-4(src="@|810.png|" o-hover="backward" o-tap="change(1)")
+    img.so.so-5(src="@|811.png|" o-hover="backward" o-tap="change(2)")
+    img.so.so-6(src="@|812.png|" o-hover="backward" o-tap="change(3)")
+    img.so.so-7(src="@|813.png|" o-hover="backward" o-tap="change(0)")
+    img.so.so-8(src="@|814.png|" o-hover="backward" o-tap="change(1)")
   img.page-2-text(src="@|page-2-text.png|")
+  //- 右上角角标
+  .index-box
+    .now 1
+    .count 9
+  //- 长图展示盒子
+  //- img.show-image(src="@|test.jpg|")
+  showcase.long-show-box(_name="show")
+    img(src="@|test.jpg|")
+    img(src="@|test-2.jpg|")
+    img(src="@|test.jpg|")
+    img(src="@|test-2.jpg|")
 </template>
 
 <script>
 module.exports = {
+  created: function () {
+    owo.animate('fadeInRight', this.query('.page-2-left'), 1000)
+  },
+  change: function (index) {
+    console.log('dddddd')
+    index = parseInt(index)
+    this.showcase.show.go(index)
+    this.query('.now').innerText = index + 1
+  }
 }
 </script>
 
 <style lang="less">
 .page2 {
   width: 100%;
-  height: 100%;
-  background-image: url('@|page-2.jpg|');
-  background-size: cover;
-  background-position: center;
 }
 .page-2-left {
-  position: absolute;
+  position: fixed;
   right: 2%;
   top: 0;
   bottom: 0;
   margin: auto;
-  user-select: none;
-  pointer-events: none;
+  width: 172px;
+  height: 449px;
+  img {
+    cursor: pointer;
+    display: block;
+  }
 }
 .page-2-text {
   position: absolute;
   left: 0;
   right: 0;
   margin: auto;
-  top: 2%;
+  top: 70px;
+}
+.long-show-box {
+  width: 600px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow: auto;
+  overflow-x: hidden;
+  padding-top: 240px;
+  padding-bottom: 5%;
+}
+.index-box {
+  position: fixed;
+  right: 5%;
+  top: 70px;
+  width: 70px;
+  height: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('@|index-box.png|');
+  font-size: 35px;
+  color: #0e3a78;
+  .now {
+    position: absolute;
+    left: 10px;
+    top: -15px;
+  }
+  .count {
+    position: absolute;
+    right: 5px;
+    bottom: -10px;
+  }
+}
+.so {position: absolute;}
+.so-0 {left: 100px;top: 293px;z-index: 8}
+.so-1 {left: 100px;top: 377px;z-index: 7}
+.so-2 {left: 100px;top: 210px;z-index: 6}
+.so-3 {left: 100px;top: 126px;z-index: 5}
+.so-4 {left: 0px;top: 247px;z-index: 0}
+.so-5 {left: 0px;top: 329px;z-index: 3}
+.so-6 {left: 0px;top: 165px;z-index: 2}
+.so-7 {left: 0px;top: 0px;z-index: 1}
+.so-8 {left: 0px;top: 82px;z-index: 0}
+.show-image {
+  display: block;
+  margin: 0 auto;
+  top: 23%;
+  left: 0;
+  right: 0;
 }
 </style>

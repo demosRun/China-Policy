@@ -1,6 +1,5 @@
 <template lang="pug">
 .home
-  plug(_name="topBarInfo" _src="https://template.owo.ink/cfeb507e71e605b2.owo")
   img.logo(src="@|logo.png|")
   img.text(src="@|text.png|")
   img.bottom(src="@|bottom.png|")
@@ -10,7 +9,8 @@
 <script>
   module.exports = {
     created: function () {
-      owo.animate('fadeIn', this.query('.text'))
+      owo.animate('bounceIn', this.query('.text'), 1000)
+      owo.animate('slideInUp', this.query('.bottom'))
     }
   }
 </script>
@@ -20,6 +20,7 @@
 .home {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background-image: url('@|main.jpg|');
   background-size: cover;
   background-position: center;
@@ -49,7 +50,8 @@
   position: absolute;
   left: 0;
   right: 0;
-  margin: auto;
-  bottom: 5%;
+  margin: 0 auto;
+  bottom: 1%;
+  cursor: pointer;
 }
 </style>

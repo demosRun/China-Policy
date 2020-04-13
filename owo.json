@@ -85,12 +85,17 @@
 			"name": "main",
 			"src": "./src/main.js",
 			"resource": true
+		},
+		{
+			"name": "ie-support",
+			"src": "./owo_modules/ie-support.js"
 		}
 	],
 	"styleList": [
 		{
 			"name": "main",
-			"src": "./src/main.css"
+			"src": "./src/main.css",
+			"resource": true
 		},
 		{
 			"name": "swiper.2.0",
@@ -107,6 +112,11 @@
 			"name": "page2",
 			"src": "/src/page/page2.owo",
 			"type": "page"
+		},
+		{
+			"name": "topBar",
+			"src": "https://template.owo.ink/cfeb507e71e605b2.owo",
+			"type": "block"
 		}
 	],
 	"mode": {
@@ -140,5 +150,11 @@
 			"allAnimate": false,
 			"title": "{TAG_14226_TAG}"
 		}
+	},
+	"globalAni": {
+		"in": "scaleDown",
+		"out": "scaleUp",
+		"backIn": "scaleDown",
+		"backOut": "scaleUp"
 	}
 }
