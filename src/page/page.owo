@@ -2,7 +2,16 @@
 .home
   img.logo(src="@|logo.png|")
   img.text(src="@|text.png|")
-  img.bottom(src="@|bottom.png|")
+  .bottom
+    img.so.so-0(src="@|1053.png|" o-hover="bob")
+    img.so.so-1(src="@|1054.png|" o-hover="bob")
+    img.so.so-2(src="@|1055.png|" o-hover="bob")
+    img.so.so-3(src="@|1056.png|" o-hover="bob")
+    img.so.so-4(src="@|1057.png|" o-hover="bob")
+    img.so.so-5(src="@|1058.png|" o-hover="bob")
+    img.so.so-6(src="@|1059.png|" o-hover="bob")
+    img.so.so-7(src="@|1060.png|" o-hover="bob")
+    img.so.so-8(src="@|1061.png|" o-hover="bob")
   img.enter(src="@|enter.png|" o-animation="shrink" go="page2")
 </template>
 
@@ -36,7 +45,14 @@
   right: 0;
   margin: auto;
   top: 65%;
-  height: 35%;
+  height: 406px;
+  width: 836px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('@|1029.png|');
+  img {
+    cursor: pointer;
+  }
 }
 .text {
   position: absolute;
@@ -54,4 +70,14 @@
   bottom: 1%;
   cursor: pointer;
 }
+.so {position: absolute;}
+.so-0 {left: 650px;top: 172px;z-index: 8}
+.so-1 {left: 746px;top: 89px;z-index: 7}
+.so-2 {left: 555px;top: 83px;z-index: 6}
+.so-3 {left: 274px;top: 167px;z-index: 5}
+.so-4 {left: 462px;top: 85px;z-index: 4}
+.so-5 {left: 371px;top: 166px;z-index: 3}
+.so-6 {left: 181px;top: 166px;z-index: 2}
+.so-7 {left: 0px;top: 0px;z-index: 1}
+.so-8 {left: 86px;top: 84px;z-index: 0}
 </style>
