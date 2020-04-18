@@ -1,15 +1,18 @@
 <template lang="pug">
 .page2
+  //- 左上角返回
+  img.back(src="@|back.png|" go="page" o-hover="grow")
   .page-2-left
-    img.so.so-0(src="@|806.png|" o-hover="forward" o-tap="change(1)")
-    img.so.so-1(src="@|807.png|" o-hover="forward" o-tap="change(2)")
-    img.so.so-2(src="@|808.png|" o-hover="forward" o-tap="change(3)")
-    img.so.so-3(src="@|809.png|" o-hover="forward" o-tap="change(0)")
-    img.so.so-4(src="@|810.png|" o-hover="backward" o-tap="change(1)")
-    img.so.so-5(src="@|811.png|" o-hover="backward" o-tap="change(2)")
-    img.so.so-6(src="@|812.png|" o-hover="backward" o-tap="change(3)")
-    img.so.so-7(src="@|813.png|" o-hover="backward" o-tap="change(0)")
-    img.so.so-8(src="@|814.png|" o-hover="backward" o-tap="change(1)")
+    .so.so-0(o-hover="backward" ind="1" o-tap="change(1)")
+    .so.so-1(o-hover="backward" ind="2" o-tap="change(2)")
+    .so.so-8(o-hover="backward" ind="3" o-tap="change(3)")
+    .so.so-2(o-hover="backward" ind="4" o-tap="change(4)")
+    .so.so-3(o-hover="backward" ind="5" o-tap="change(5)")
+    .so.so-7(o-hover="forward" ind="6" o-tap="change(6)")
+    .so.so-4(o-hover="forward" ind="7" o-tap="change(7)")
+    .so.so-5(o-hover="forward" ind="8" o-tap="change(8)")
+    .so.so-6(o-hover="forward" ind="9" o-tap="change(9)")
+    
   img.page-2-text(src="@|page-2-text.png|")
   //- 右上角角标
   .index-box
@@ -18,23 +21,59 @@
   //- 长图展示盒子
   //- img.show-image(src="@|test.jpg|")
   showcase.long-show-box(_name="show")
+    //- 领
     img(src="@|test.jpg|")
+    //- 统
     img(src="@|test-2.jpg|")
+    //- 精
     img(src="@|test.jpg|")
+    //- 治
     img(src="@|test-2.jpg|")
+    //- 法
+    img(src="@|test.jpg|")
+    //- 严
+    img(src="@|test-2.jpg|")
+    //- 稳
+    img(src="@|test.jpg|")
+    //- 研
+    img(src="@|test-2.jpg|")
+    //- 共
+    img(src="@|test.jpg|")
 </template>
 
 <script>
 module.exports = {
+  data: {
+    activeIndex: 1
+  },
   created: function () {
-    owo.animate('fadeInRight', this.query('.page-2-left'), 1000)
+    
+    // 如果是手机则需要缩放右侧菜单
+    if (!screenInfo.isPc) {
+      // this.query('.page-2-left').style.transform = `scale(${screenInfo.width / 740})`
+    } else {
+      owo.animate('fadeInRight', this.query('.page-2-left'), 1000)
+    }
+    setTimeout(() => {
+      this.query(`.page-2-left [ind="${this.showcase.show.activeIndex + 1}"]`).classList.add('active')
+    }, 0);
+    
   },
   change: function (index) {
-    index = parseInt(index)
+    index = parseInt(index) - 1
     this.showcase.show.go(index)
-    window.scrollTo(0,0)
     this.query('.now').innerText = index + 1
-    document.body.scrollTo({top: 0, behavior: 'smooth'})
+    if (document.body.scrollTo) {
+      document.body.scrollTo({top: 0, behavior: 'smooth'})
+    }
+    
+    // 清除所有活跃样式
+    const soList = this.queryAll('.page-2-left .so')
+    for (let index = 0; index < soList.length; index++) {
+      const element = soList[index];
+      element.classList.remove('active')
+    }
+    this.query(`.page-2-left [ind="${index + 1}"]`).classList.add('active')
   }
 }
 </script>
@@ -45,15 +84,40 @@ module.exports = {
 }
 .page-2-left {
   position: fixed;
-  right: 2%;
   top: 0;
   bottom: 0;
   margin: auto;
-  width: 172px;
-  height: 449px;
-  img {
+  width: 178px;
+  height: 484px;
+  z-index: 99;
+  transform-origin: right bottom;
+  .so-0 {left: 0px;top: 0px;z-index: 8;background-image: url('@|home2976.png|');}
+  .so-1 {left: 11px;top: 114px;z-index: 7;background-image: url('@|home2984.png|');}
+  .so-2 {left: 10px;top: 325px;z-index: 6;background-image: url('@|home2983.png|');}
+  .so-3 {left: 10px;top: 429px;z-index: 5;background-image: url('@|home2982.png|');}
+  .so-4 {left: 114px;top: 177px;z-index: 4;background-image: url('@|home2981.png|');}
+  .so-5 {left: 116px;top: 280px;z-index: 3;background-image: url('@|home2980.png|');}
+  .so-6 {left: 110px;top: 373px;z-index: 2;background-image: url('@|home2979.png|');}
+  .so-7 {left: 116px;top: 74px;z-index: 1;background-image: url('@|home2978.png|');}
+  .so-8 {left: 9px;top: 217px;z-index: 0;background-image: url('@|home2977.png|');}
+  .so-0.active{background-image: url('@|home2976-active.png|');background-size: auto 80px;}
+  .so-1.active{background-image: url('@|home2984-active.png|');background-size: auto 80px;}
+  .so-2.active{background-image: url('@|home2983-active.png|');background-size: auto 80px;}
+  .so-3.active{background-image: url('@|home2982-active.png|');background-size: auto 80px;}
+  .so-4.active{background-image: url('@|home2981-active.png|');background-size: auto 80px;}
+  .so-5.active{background-image: url('@|home2980-active.png|');background-size: auto 80px;}
+  .so-6.active{background-image: url('@|home2979-active.png|');background-size: auto 80px;}
+  .so-7.active{background-image: url('@|home2978-active.png|');background-size: auto 80px;}
+  .so-8.active{background-image: url('@|home2977-active.png|');background-size: auto 80px;}
+  .so {
     cursor: pointer;
     display: block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    background-size: auto 60px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 .page-2-text {
@@ -61,7 +125,7 @@ module.exports = {
   left: 0;
   right: 0;
   margin: auto;
-  top: 70px;
+  top: 95px;
 }
 .long-show-box {
   width: 600px;
@@ -70,8 +134,13 @@ module.exports = {
   margin: auto;
   overflow: auto;
   overflow-x: hidden;
-  padding-top: 240px;
+  padding-top: 260px;
   padding-bottom: 5%;
+  padding-left: 5px;
+  padding-right: 5px;
+  img {
+    box-shadow: 1px 1px 5px #928383;
+  }
 }
 .index-box {
   position: fixed;
@@ -95,21 +164,18 @@ module.exports = {
     bottom: -10px;
   }
 }
-.so {position: absolute;}
-.so-0 {left: 100px;top: 293px;z-index: 8}
-.so-1 {left: 100px;top: 377px;z-index: 7}
-.so-2 {left: 100px;top: 210px;z-index: 6}
-.so-3 {left: 100px;top: 126px;z-index: 5}
-.so-4 {left: 0px;top: 247px;z-index: 0}
-.so-5 {left: 0px;top: 329px;z-index: 3}
-.so-6 {left: 0px;top: 165px;z-index: 2}
-.so-7 {left: 0px;top: 0px;z-index: 1}
-.so-8 {left: 0px;top: 82px;z-index: 0}
+
 .show-image {
   display: block;
   margin: 0 auto;
   top: 23%;
   left: 0;
   right: 0;
+}
+.back {
+  position: absolute;
+  left: 100px;
+  top: 130px;
+  cursor: pointer;
 }
 </style>

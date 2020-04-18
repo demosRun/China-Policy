@@ -78,10 +78,6 @@
 			"src": "http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js"
 		},
 		{
-			"name": "swiper.min.2.0",
-			"src": "http://tools.people.com.cn/libs/swiper/2.0/idangerous.swiper.min.js"
-		},
-		{
 			"name": "main",
 			"src": "./src/main.js",
 			"resource": true
@@ -89,17 +85,22 @@
 		{
 			"name": "ie-support",
 			"src": "./owo_modules/ie-support.js"
+		},
+		{
+			"name": "check",
+			"src": "./owo_modules/check.js"
+		},
+		{
+			"name": "particleImage",
+			"src": "./src/resource/particleImage.js"
 		}
 	],
 	"styleList": [
 		{
 			"name": "main",
 			"src": "./src/main.css",
-			"resource": true
-		},
-		{
-			"name": "swiper.2.0",
-			"src": "http://tools.people.com.cn/libs/swiper/2.0/idangerous.swiper.css"
+			"resource": true,
+			"less": true
 		}
 	],
 	"pageList": [

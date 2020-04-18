@@ -76,3 +76,93 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
   position: absolute;
   top: 0;
 }
+
+.pc .no-pc, .phone .no-phone {
+  display: none;
+}
+
+.phone .header1 {
+  display: none;
+}
+
+.phone .home {
+  background-image: url('@|main-phone.jpg|');
+}
+
+.phone .bottom {
+  transform-origin: 2vw 0;
+  top: 95vw;
+  opacity: 0;
+  bottom: auto;
+  transition: opacity 2s;
+}
+
+.phone .enter {
+  width: 15vw;
+  top: 132vw;
+}
+
+.phone .page-2-text {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 67vw;
+  top: 0;
+}
+
+.phone .page2 .long-show-box {
+  width: 96%;
+  padding-top: 40px;
+  display: block;
+  margin: 0 auto;
+}
+
+.phone .page2 .long-show-box img {
+  width: 100%;
+}
+
+.phone .page2 .page-2-left {
+  background-color: #ecf2ff;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  height: 13vw;
+  justify-content: center;
+  align-items: center;
+  top: auto;
+  box-shadow: 0px -1px 6px #c2c1e4;
+}
+.phone .index-box {
+  right: 1%;
+}
+.pc .page2 .page-2-left {
+  right: 0;
+  left: 880px;
+}
+.phone .page2 .page-2-left .so {
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 11vw;
+  height: 11vw;
+}
+
+.phone .index-box {
+  transform: scale(0.6);
+}
+
+.phone {
+  .long-show-box {
+    padding-bottom: 80px;
+  }
+}
+
+.phone [o-hover="backward"]:hover, .phone [o-hover="backward"]:focus, .phone [o-hover="backward"]:active {
+  transform: translateX(0px);
+}
+
+.phone [o-hover="forward"]:hover, .phone [o-hover="forward"]:focus, .phone [o-hover="forward"]:active {
+  transform: translateX(0px);
+}

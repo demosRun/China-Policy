@@ -1,9 +1,0 @@
-<template lang="pug">
-.show
-  img(src="@|test.jpg|")
-</template>
-
-
-<style lang="less">
-
-</style>
