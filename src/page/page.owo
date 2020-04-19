@@ -5,7 +5,8 @@
   canvas.canvas1.no-phone
   //- 手机的文字
   img.text-phone.no-pc(src="@|text-phone.png|")
-  .bamboo-slip
+  canvas.canvas2.no-pc
+  .bamboo-slip.no-phone
     .bamboo
       .so.so-0.text-item(go="page2/showcase-show=0")
         img.link-more(src="@|linkMore.png|")
@@ -29,8 +30,12 @@
       
       img.so.so-9(src="@|home2975.png|")
     img.so.so-10(src="@|home2973.png|")
-  //- img.enter(src="@|enter.png|" o-animation="shrink" go="page2")
-  plug(_name="copyright" _src="https://template.owo.ink/060579f0b4f1bcaa.owo")
+  //- 手机底部点击
+  .phone-bottom-box.no-pc(o-animation="shrink" go="phoneEx//scaleDownCenter/scaleUpCenter&&delay400/true")
+    img.so.so-0(src="@|1557.png|")
+    img.so.so-1(src="@|1556.png|")
+  img.logo.no-pc(src="@|logo.png|")
+  plug.no-phone(_name="copyright" _src="https://template.owo.ink/060579f0b4f1bcaa.owo")
 </template>
 
 <script>
@@ -44,24 +49,29 @@
             particleImage(textEL, this.query('.canvas1'))
           }, 100);
         }
-        setTimeout(() => {
+        if (!_owo.isIE) {
+          setTimeout(() => {
+            this.query('.bamboo').style.width = '100%'
+          }, 4000);
+        } else {
+          this.query('.bamboo').style.left = '0'
+          this.query('.bamboo').style.bottom = '-200px'
           this.query('.bamboo').style.width = '100%'
-        }, 4000);
-        
+        }
         // owo.animate('slideInUp', this.query('.bottom'))
       } else {
-        // this.query('.bottom').style.transform = `scale(${screenInfo.width / 860})`
-        owo.animate('bounceIn', this.query('.text-phone'), 1000)
+        const textEL = this.query('.text-phone')
+        textEL.style.display = 'none'
         setTimeout(() => {
-          // this.query('.bottom').style.opacity = 1
+          particleImage(textEL, this.query('.canvas2'))
         }, 1000);
       }
       // 鼠标进入音效 .text-item
-      this.queryAll('.text-item').forEach(element => {
-        element.onmouseover = function () {
-          new Audio('@|hover.mp3|').play()
-        }
-      });
+      // this.queryAll('.text-item').forEach(element => {
+      //   element.onmouseover = function () {
+      //     new Audio('@|hover.mp3|').play()
+      //   }
+      // });
     },
     change: function (index) {
       owo.script.page2.data.activeIndex = index
@@ -85,7 +95,8 @@
 .logo {
   position: absolute;
   right: 5%;
-  top: 13%;
+  height: 9vw;
+  top: 5%;
 }
 .text, .canvas1 {
   position: absolute;
@@ -105,13 +116,14 @@
   cursor: pointer;
   z-index: 999;
 }
-.text-phone {
+.text-phone, .canvas2 {
   width: 80%;
   position: absolute;
   left: 0;
   right: 0;
   margin: auto;
   top: 20%;
+  height: 55vw;
 }
 .so {position: absolute;}
 .bamboo-slip {
@@ -119,10 +131,11 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-  bottom: -30px;
+  bottom: -90px;
   z-index: 1;
   width: 1464px;
   height: 600px;
+  z-index: 99;
   .text-item {
     cursor: pointer;
     width: 100px;
@@ -151,7 +164,7 @@
   .so-7:hover{background-image: url('@|home2978-active.png|');background-size: auto 100px;}
   .so-8 {left: 550px;top: 159px;z-index: 2;background-image: url('@|home2977.png|');}
   .so-8:hover{background-image: url('@|home2977-active.png|');background-size: auto 100px;}
-  .so-9 {left: 0px;top: 0px;z-index: 1}
+  .so-9 {left: 0px;top: 0px;z-index: 1;margin: 0 auto;}
   .so-10 {left: 292px;top: 174px;z-index: 0;user-select: none;pointer-events: none;}
 }
 .bamboo {
@@ -161,10 +174,10 @@
   height: 100%;
   right: 0;
   top: 0;
-  left: 7%;
+  left: 13%;
   margin: auto;
   transition: width 1s;
-  transform: scale(.8);
+  transform: scale(.7);
   transform-origin: left;
 }
 .link-more {
@@ -179,5 +192,32 @@
 #copyright {
   position: absolute;
   bottom: 0;
+}
+.phone-bottom-box {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 9%;
+  z-index: 1;
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  .so-0 {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+  }
+  .so-1 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
 }
 </style>

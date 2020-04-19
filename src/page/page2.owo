@@ -1,17 +1,20 @@
 <template lang="pug">
 .page2
   //- 左上角返回
-  img.back(src="@|back.png|" go="page" o-hover="grow")
+  img.back.no-phone(src="@|back.png|" go="page" o-hover="grow")
+  
+  .phone-top-bar.no-pc
+    img.no-pc.phone-back(src="@|phone-back.png|" go="page//moveToRight/moveFromLeft/true")
   .page-2-left
-    .so.so-0(o-hover="backward" ind="1" o-tap="change(1)")
-    .so.so-1(o-hover="backward" ind="2" o-tap="change(2)")
-    .so.so-8(o-hover="backward" ind="3" o-tap="change(3)")
-    .so.so-2(o-hover="backward" ind="4" o-tap="change(4)")
-    .so.so-3(o-hover="backward" ind="5" o-tap="change(5)")
-    .so.so-7(o-hover="forward" ind="6" o-tap="change(6)")
-    .so.so-4(o-hover="forward" ind="7" o-tap="change(7)")
-    .so.so-5(o-hover="forward" ind="8" o-tap="change(8)")
-    .so.so-6(o-hover="forward" ind="9" o-tap="change(9)")
+    .so.so-0(o-hover="backward" ind="0" o-tap="change(0)")
+    .so.so-1(o-hover="backward" ind="1" o-tap="change(1)")
+    .so.so-8(o-hover="backward" ind="2" o-tap="change(2)")
+    .so.so-2(o-hover="backward" ind="3" o-tap="change(3)")
+    .so.so-3(o-hover="backward" ind="4" o-tap="change(4)")
+    .so.so-7(o-hover="forward" ind="5" o-tap="change(5)")
+    .so.so-4(o-hover="forward" ind="6" o-tap="change(6)")
+    .so.so-5(o-hover="forward" ind="7" o-tap="change(7)")
+    .so.so-6(o-hover="forward" ind="8" o-tap="change(8)")
     
   img.page-2-text(src="@|page-2-text.png|")
   //- 右上角角标
@@ -46,21 +49,55 @@ module.exports = {
   data: {
     activeIndex: 1
   },
+  show: function () {
+    // 清除所有活跃样式
+    const soList = this.queryAll('.page-2-left .so')
+    for (let index = 0; index < soList.length; index++) {
+      const element = soList[index];
+      element.classList.remove('active')
+    }
+    setTimeout(() => {
+      this.query('.now').innerText = this.showcase.show.activeIndex + 1
+      this.query(`.page-2-left [ind="${this.showcase.show.activeIndex}"]`).classList.add('active')
+    }, 0);
+  },
   created: function () {
-    
     // 如果是手机则需要缩放右侧菜单
     if (!screenInfo.isPc) {
+      owo.tool.toast('点击文字或者左右滑动切换内容!')
       // this.query('.page-2-left').style.transform = `scale(${screenInfo.width / 740})`
+      // 手机上注册左右滑动
+      owo.tool.touch({
+        el: this.query('.long-show-box'),
+        end: (info) => {
+          if (info.swipe[0] < -100) {
+            this.change(this.showcase.show.activeIndex + 1)
+          } else if (info.swipe[0] > 100) {
+            this.change(this.showcase.show.activeIndex - 1)
+          }
+        }
+      })
     } else {
       owo.animate('fadeInRight', this.query('.page-2-left'), 1000)
     }
-    setTimeout(() => {
-      this.query(`.page-2-left [ind="${this.showcase.show.activeIndex + 1}"]`).classList.add('active')
-    }, 0);
     
   },
   change: function (index) {
-    index = parseInt(index) - 1
+    const soList = this.queryAll('.page-2-left .so')
+    index = parseInt(index)
+    if ((index + 1) > soList.length) {
+      owo.tool.toast('已经是最后一个了!')
+      return
+    } else if (index < 0) {
+      owo.tool.toast('已经是第一个了!')
+      return
+    }
+    // 播放翻书声音
+    if ( !_owo.isIE) {
+      if(!this.data.changeMusic) this.data.changeMusic = new Audio('@|hover.mp3|')
+      this.data.changeMusic.play()
+    }
+    
     this.showcase.show.go(index)
     this.query('.now').innerText = index + 1
     if (document.body.scrollTo) {
@@ -68,12 +105,12 @@ module.exports = {
     }
     
     // 清除所有活跃样式
-    const soList = this.queryAll('.page-2-left .so')
+    
     for (let index = 0; index < soList.length; index++) {
       const element = soList[index];
       element.classList.remove('active')
     }
-    this.query(`.page-2-left [ind="${index + 1}"]`).classList.add('active')
+    this.query(`.page-2-left [ind="${index}"]`).classList.add('active')
   }
 }
 </script>
@@ -86,10 +123,12 @@ module.exports = {
   position: fixed;
   top: 0;
   bottom: 0;
-  margin: auto;
+  margin: auto auto;
   width: 178px;
   height: 484px;
   z-index: 99;
+  right: 0;
+  left: 880px;
   transform-origin: right bottom;
   .so-0 {left: 0px;top: 0px;z-index: 8;background-image: url('@|home2976.png|');}
   .so-1 {left: 11px;top: 114px;z-index: 7;background-image: url('@|home2984.png|');}
@@ -100,15 +139,15 @@ module.exports = {
   .so-6 {left: 110px;top: 373px;z-index: 2;background-image: url('@|home2979.png|');}
   .so-7 {left: 116px;top: 74px;z-index: 1;background-image: url('@|home2978.png|');}
   .so-8 {left: 9px;top: 217px;z-index: 0;background-image: url('@|home2977.png|');}
-  .so-0.active{background-image: url('@|home2976-active.png|');background-size: auto 80px;}
-  .so-1.active{background-image: url('@|home2984-active.png|');background-size: auto 80px;}
-  .so-2.active{background-image: url('@|home2983-active.png|');background-size: auto 80px;}
-  .so-3.active{background-image: url('@|home2982-active.png|');background-size: auto 80px;}
-  .so-4.active{background-image: url('@|home2981-active.png|');background-size: auto 80px;}
-  .so-5.active{background-image: url('@|home2980-active.png|');background-size: auto 80px;}
-  .so-6.active{background-image: url('@|home2979-active.png|');background-size: auto 80px;}
-  .so-7.active{background-image: url('@|home2978-active.png|');background-size: auto 80px;}
-  .so-8.active{background-image: url('@|home2977-active.png|');background-size: auto 80px;}
+  .so-0.active {background-image: url('@|home2976-active.png|');background-size: auto 80px;}
+  .so-1.active {background-image: url('@|home2984-active.png|');background-size: auto 80px;}
+  .so-2.active {background-image: url('@|home2983-active.png|');background-size: auto 80px;}
+  .so-3.active {background-image: url('@|home2982-active.png|');background-size: auto 80px;}
+  .so-4.active {background-image: url('@|home2981-active.png|');background-size: auto 80px;}
+  .so-5.active {background-image: url('@|home2980-active.png|');background-size: auto 80px;}
+  .so-6.active {background-image: url('@|home2979-active.png|');background-size: auto 80px;}
+  .so-7.active {background-image: url('@|home2978-active.png|');background-size: auto 80px;}
+  .so-8.active {background-image: url('@|home2977-active.png|');background-size: auto 80px;}
   .so {
     cursor: pointer;
     display: block;
@@ -126,6 +165,7 @@ module.exports = {
   right: 0;
   margin: auto;
   top: 95px;
+  z-index: 99;
 }
 .long-show-box {
   width: 600px;
@@ -153,6 +193,7 @@ module.exports = {
   background-image: url('@|index-box.png|');
   font-size: 35px;
   color: #0e3a78;
+  z-index: 99;
   .now {
     position: absolute;
     left: 10px;
@@ -173,9 +214,18 @@ module.exports = {
   right: 0;
 }
 .back {
-  position: absolute;
+  position: fixed;
   left: 100px;
   top: 130px;
   cursor: pointer;
+}
+.phone-top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 45px;
+  background-color: #faf9fe;
+  box-shadow: 1px 1px 4px #f1e7e7;
+  z-index: 98;
 }
 </style>

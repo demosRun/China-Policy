@@ -93,6 +93,16 @@
 		{
 			"name": "particleImage",
 			"src": "./src/resource/particleImage.js"
+		},
+		{
+			"name": "touch",
+			"afterbody": true,
+			"src": "./owo_modules/touch.js"
+		},
+		{
+			"name": "toast",
+			"afterbody": true,
+			"src": "./owo_modules/toast.js"
 		}
 	],
 	"styleList": [
@@ -118,6 +128,11 @@
 			"name": "topBar",
 			"src": "https://template.owo.ink/cfeb507e71e605b2.owo",
 			"type": "block"
+		},
+		{
+			"name": "phoneEx",
+			"src": "/src/page/phoneEx.owo",
+			"type": "page"
 		}
 	],
 	"mode": {
@@ -151,11 +166,5 @@
 			"allAnimate": false,
 			"title": "{TAG_14226_TAG}"
 		}
-	},
-	"globalAni": {
-		"in": "scaleDown",
-		"out": "scaleUp",
-		"backIn": "scaleDown",
-		"backOut": "scaleUp"
 	}
 }

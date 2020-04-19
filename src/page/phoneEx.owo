@@ -1,0 +1,76 @@
+<template lang="pug">
+.phoneEx
+  img.phone-title(src="@|page-2-text.png|")
+  //- 竹筒
+  .cent.clear
+    .so.so-0.text-item(go="page2/showcase-show=0/scaleDownCenter/scaleUpCenter&&delay400/true")
+    .so.so-1.text-item(go="page2/showcase-show=1/scaleDownCenter/scaleUpCenter&&delay400/true")
+    .so.so-8.text-item(go="page2/showcase-show=2/scaleDownCenter/scaleUpCenter&&delay400/true")
+    .so.so-2.text-item(go="page2/showcase-show=3/scaleDownCenter/scaleUpCenter&&delay400/true")
+    .so.so-3.text-item(go="page2/showcase-show=4/scaleDownCenter/scaleUpCenter&&delay400/true")
+    .so.so-7.text-item(go="page2/showcase-show=5/scaleDownCenter/scaleUpCenter&&delay400/true")
+    .so.so-4.text-item(go="page2/showcase-show=6/scaleDownCenter/scaleUpCenter&&delay400/true")
+    .so.so-5.text-item(go="page2/showcase-show=7/scaleDownCenter/scaleUpCenter&&delay400/true")
+    .so.so-6.text-item(go="page2/showcase-show=8/scaleDownCenter/scaleUpCenter&&delay400/true")
+  img.info(src="@|phoneex-info.png|" o-animation="flicker")
+</template>
+<script>
+module.exports = {
+}
+</script>
+<style lang="less">
+.phoneEx {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+.cent {
+  width: 100%;
+  height: 104vw;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 33vw;
+  top: 15vw;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  background-image: url('@|phone-ex-cent.png|');
+  .so {
+    width: 33vw;
+    height: 24vw;
+    background-size: 15vw;
+    float: left;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+.phone-title {
+  height: 12vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 17vw;
+}
+.info {
+  position: absolute;
+  height: 4vw;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 10vw;
+}
+.so-0 {left: 303px;top: 162px;z-index: 10;background-image: url('@|home2976-active.png|');}
+.so-1 {z-index: 9;background-image: url('@|home2984-active.png|');}
+.so-2 {;z-index: 8;background-image: url('@|home2983-active.png|');}
+.so-3 {z-index: 7;background-image: url('@|home2982-active.png|');}
+.so-4 {z-index: 6;background-image: url('@|home2981-active.png|');}
+.so-5 {z-index: 5;background-image: url('@|home2980-active.png|');}
+.so-6 {z-index: 4;background-image: url('@|home2979-active.png|');}
+.so-7 {z-index: 3;background-image: url('@|home2978-active.png|');}
+.so-8 {z-index: 2;background-image: url('@|home2977-active.png|');}
+.so-9 {z-index: 1}
+</style>

@@ -85,8 +85,12 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
   display: none;
 }
 
-.phone .home {
+.phone {
   background-image: url('@|main-phone.jpg|');
+}
+
+.phone .home {
+  background-image: none;
 }
 
 .phone .bottom {
@@ -103,17 +107,17 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 }
 
 .phone .page-2-text {
-  position: relative;
   display: block;
   margin: 0 auto;
-  margin-top: 30px;
-  width: 67vw;
-  top: 0;
+  top: 1px;
+  left: -1vw;
+  position: fixed;
+  height: 40px;
 }
 
 .phone .page2 .long-show-box {
   width: 96%;
-  padding-top: 40px;
+  padding-top: 60px;
   display: block;
   margin: 0 auto;
 }
@@ -123,7 +127,7 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 }
 
 .phone .page2 .page-2-left {
-  background-color: #ecf2ff;
+  background-color: #4f759b;
   width: 100%;
   bottom: 0;
   right: 0;
@@ -132,10 +136,12 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
   justify-content: center;
   align-items: center;
   top: auto;
-  box-shadow: 0px -1px 6px #c2c1e4;
+  box-shadow: 0 0px 3px #3c3c42;
 }
 .phone .index-box {
-  right: 1%;
+  right: 5px;
+  top: 9px;
+  transform-origin: right top;
 }
 .pc .page2 .page-2-left {
   right: 0;
@@ -147,6 +153,11 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
   top: auto;
   width: 11vw;
   height: 11vw;
+  background-size: 6vw;
+}
+
+.phone .page2 .page-2-left .active {
+  background-size: 9vw;
 }
 
 .phone .index-box {
@@ -166,3 +177,24 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 .phone [o-hover="forward"]:hover, .phone [o-hover="forward"]:focus, .phone [o-hover="forward"]:active {
   transform: translateX(0px);
 }
+
+.phone .phone-back {
+  position: absolute;
+  width: 4vw;
+  top: 9px;
+  left: 10px;
+}
+
+.phone .page2 {
+  background-image: url('@|main-phone.jpg|');
+}
+
+.phone .page2  .so-0 {background-image: url('@|home2976-active.png|');background-size: auto 80px;}
+.phone .page2  .so-1 {background-image: url('@|home2984-active.png|');background-size: auto 80px;}
+.phone .page2  .so-2 {background-image: url('@|home2983-active.png|');background-size: auto 80px;}
+.phone .page2  .so-3 {background-image: url('@|home2982-active.png|');background-size: auto 80px;}
+.phone .page2  .so-4 {background-image: url('@|home2981-active.png|');background-size: auto 80px;}
+.phone .page2  .so-5 {background-image: url('@|home2980-active.png|');background-size: auto 80px;}
+.phone .page2  .so-6 {background-image: url('@|home2979-active.png|');background-size: auto 80px;}
+.phone .page2  .so-7 {background-image: url('@|home2978-active.png|');background-size: auto 80px;}
+.phone .page2  .so-8 {background-image: url('@|home2977-active.png|');background-size: auto 80px;}
