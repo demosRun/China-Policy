@@ -64,7 +64,7 @@ module.exports = {
   created: function () {
     // 如果是手机则需要缩放右侧菜单
     if (!screenInfo.isPc) {
-      owo.tool.toast('点击文字或者左右滑动切换内容!')
+      owo.tool.toast('点击文字或者左右滑动切换内容!', {time: 5000})
       // this.query('.page-2-left').style.transform = `scale(${screenInfo.width / 740})`
       // 手机上注册左右滑动
       owo.tool.touch({

@@ -32,7 +32,7 @@
     img.so.so-10(src="@|home2973.png|")
   //- 手机底部点击
   .phone-bottom-box.no-pc(o-animation="shrink" go="phoneEx//scaleDownCenter/scaleUpCenter&&delay400/true")
-    img.so.so-0(src="@|1557.png|")
+    .so.so-0
     img.so.so-1(src="@|1556.png|")
   img.logo.no-pc(src="@|logo.png|")
   plug.no-phone(_name="copyright" _src="https://template.owo.ink/060579f0b4f1bcaa.owo")
@@ -65,6 +65,20 @@
         setTimeout(() => {
           particleImage(textEL, this.query('.canvas2'))
         }, 1000);
+        setTimeout(() => {
+          this.query('.phone-bottom-box .so-0').style.width = '178px'
+          // 自动进入第二页
+          setTimeout(() => {
+            if (owo.activePage === 'page') {
+              owo.go({
+                page: "phoneEx",
+                inAnimation: "scaleDownCenter",
+                outAnimation: "scaleUpCenter&&delay400",
+                noBack: true
+              })
+            }
+          }, 1000);
+        }, 4000);
       }
       // 鼠标进入音效 .text-item
       // this.queryAll('.text-item').forEach(element => {
@@ -185,8 +199,8 @@
   left: 0;
   right: 0;
   margin: auto;
-  bottom: -38px;
-  width: 56px;
+  bottom: -52px;
+  width: 78px;
   display: none;
 }
 #copyright {
@@ -206,10 +220,14 @@
     height: 100%;
     width: auto;
     position: absolute;
-    left: 0;
-    right: 0;
+    left: -50%;
+    right: -50%;
     margin: auto;
     z-index: 1;
+    background-image: url('@|1557.png|');
+    background-size: auto 100%;
+    width: 72px;
+    transition: width 1s;
   }
   .so-1 {
     width: 100%;

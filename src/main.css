@@ -136,6 +136,7 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
   justify-content: center;
   align-items: center;
   top: auto;
+  left: 0;
   box-shadow: 0 0px 3px #3c3c42;
 }
 .phone .index-box {
@@ -198,3 +199,24 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 .phone .page2  .so-6 {background-image: url('@|home2979-active.png|');background-size: auto 80px;}
 .phone .page2  .so-7 {background-image: url('@|home2978-active.png|');background-size: auto 80px;}
 .phone .page2  .so-8 {background-image: url('@|home2977-active.png|');background-size: auto 80px;}
+
+@media screen and (max-height: 890px) {
+  #copyright {
+    display: none;
+  }
+  .home .bamboo-slip {
+    bottom: -180px;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .home .text, .home .canvas1 {
+    top: 50px;
+  }
+}
+
+@media screen and (max-height: 740px) {
+  .home .bamboo-slip {
+    bottom: -280px;
+  }
+}
